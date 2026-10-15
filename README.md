@@ -23,9 +23,20 @@ python artifact_tracker.py <target>
 
 | Flag | Description |
 |---|---|
-| `-o, --output` | Write results to a file |
+| `-o, --output` | Specify an output path (reserved; this scaffold does not write results) |
 | `-v, --verbose` | Verbose output |
 | `-y, --yes` | Skip the authorisation prompt |
+
+The current implementation is a workflow scaffold: it validates the authorisation
+gate and prints the selected target, but does not perform engagement checks or
+write an output file. If the authorisation prompt reaches end-of-file (for example,
+when stdin is closed), it refuses to run.
+
+Run the local regression tests with:
+
+```bash
+python -m unittest discover -s tests
+```
 
 ## Disclaimer
 
