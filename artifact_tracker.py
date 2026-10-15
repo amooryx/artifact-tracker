@@ -24,7 +24,11 @@ def authorised(assume_yes: bool) -> bool:
     """
     if assume_yes:
         return True
-    ans = input("Do you have written authorisation to test this target? [y/N] ")
+    try:
+        ans = input("Do you have written authorisation to test this target? [y/N] ")
+    except EOFError:
+        print("[!] authorisation input unavailable; refusing to run.")
+        return False
     return ans.strip().lower() in ("y", "yes")
 
 
